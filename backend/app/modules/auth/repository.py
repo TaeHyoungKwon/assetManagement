@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from uuid import uuid4
 from datetime import datetime
 # Module
-from api.v1.auth.database.models import User
-from api.v1.auth.database.schemas import ProviderEnum, UserRoleEnum
+from app.modules.auth.models import User
+from app.modules.auth.schemas import ProviderEnum, UserRoleEnum
 
 class DBHandler():
     def get_or_create_user(self, db:Session, social_id: str, provider: ProviderEnum):

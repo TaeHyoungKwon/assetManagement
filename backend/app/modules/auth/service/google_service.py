@@ -4,7 +4,6 @@ from google.auth.transport import requests
 from os import getenv
 from dotenv import load_dotenv
 # Module
-from api.v1.auth.service.config_service import oauth
 
 load_dotenv()
 GOOGLE_CLIENT_ID = getenv('GOOGLE_CLIENT_ID', None)

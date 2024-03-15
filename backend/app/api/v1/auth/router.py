@@ -1,14 +1,15 @@
 # Library
 from fastapi import APIRouter, Depends, HTTPException, status
+
 from fastapi.responses import RedirectResponse, JSONResponse
 from authlib.integrations.starlette_client import OAuthError
 from sqlalchemy.orm import Session
 from starlette.requests import Request
 from aredis import StrictRedis
 # Module
-from api.v1.auth.service.auth_service import AuthenticationBuilder  
-from api.v1.auth.database.schemas import TokenRequest
-from api.v1.auth.service.config_service import oauth
+from app.modules.auth.service.auth_service import AuthenticationBuilder
+from app.modules.auth.schemas import TokenRequest
+from app.modules.auth.service.config_service import oauth
 from dependencies.dependencies import get_postgres_session, get_redis_pool
 
 authRouter = APIRouter()

@@ -5,12 +5,12 @@ from fastapi import HTTPException
 from aredis import StrictRedis
 from authlib.integrations.starlette_client import OAuthError
 # Module
-from api.v1.auth.database.schemas import ProviderEnum
-from api.v1.auth.service.google_service import verify_google_token
-from api.v1.auth.service.kakao_service import authenticate_with_kakao
-from api.v1.auth.service.naver_service import authenticate_with_naver
-from api.v1.auth.service.jwt_service import generate_jwt
-from api.v1.auth.database.repository import DBHandler
+from app.modules.auth.schemas import ProviderEnum
+from app.modules.auth.service.google_service import verify_google_token
+from app.modules.auth.service.kakao_service import authenticate_with_kakao
+from app.modules.auth.service.naver_service import authenticate_with_naver
+from app.modules.auth.service.jwt_service import generate_jwt
+from app.modules.auth.repository import DBHandler
 
 # [수정] Strategy Pattern을 활용해, social auth따라 인증합니다.
 
