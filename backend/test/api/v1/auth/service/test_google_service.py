@@ -16,7 +16,7 @@ async def test_authenticate_with_google_success():
         'userinfo': {'sub': '12345'}
     }
 
-    with patch('api.v1.auth.service.google_service.oauth.google.authorize_access_token', AsyncMock(return_value=mock_token_response)):
+    with patch('api.v1.authentication.service.google_service.oauth.google.authorize_access_token', AsyncMock(return_value=mock_token_response)):
         social_id = await authenticate_with_google(request)
         assert social_id == '12345'
 
@@ -26,7 +26,7 @@ async def test_authenticate_with_google_user_failure():
     
     mock_token_response = {}
 
-    with patch('api.v1.auth.service.google_service.oauth.google.authorize_access_token', AsyncMock(return_value=mock_token_response)):
+    with patch('api.v1.authentication.service.google_service.oauth.google.authorize_access_token', AsyncMock(return_value=mock_token_response)):
         with pytest.raises(HTTPException) as exc_info:
             await authenticate_with_google(request)
         assert exc_info.value.status_code == 400
@@ -37,7 +37,7 @@ async def test_authenticate_with_google_oauth_error():
     request = Request(scope={"type": "http"})
 
     # Ensure the side_effect raises an OAuthError
-    with patch('api.v1.auth.service.google_service.oauth.google.authorize_access_token', side_effect=OAuthError(error="OAuth error")):
+    with patch('api.v1.authentication.service.google_service.oauth.google.authorize_access_token', side_effect=OAuthError(error="OAuth error")):
         with pytest.raises(HTTPException) as exc_info:
             await authenticate_with_google(request)
         assert exc_info.value.status_code == 400

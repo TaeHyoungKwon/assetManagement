@@ -30,7 +30,7 @@ def db_session():
         db.close()
 
 @pytest.mark.asyncio
-@patch('api.v1.auth.service.auth_service.authenticate_with_google', new_callable=AsyncMock)
+@patch('api.v1.authentication.service.auth_service.authenticate_with_google', new_callable=AsyncMock)
 async def test_google_authenticate_success(mock_authenticate_with_google, db_session):
     mock_authenticate_with_google.return_value = '12345'
     
@@ -45,7 +45,7 @@ async def test_google_authenticate_success(mock_authenticate_with_google, db_ses
     assert db_user is not None
 
 @pytest.mark.asyncio
-@patch('api.v1.auth.service.auth_service.authenticate_with_google', new_callable=AsyncMock)
+@patch('api.v1.authentication.service.auth_service.authenticate_with_google', new_callable=AsyncMock)
 async def test_google_authenticate_failure(mock_authenticate_with_google, db_session):
     mock_authenticate_with_google.side_effect = HTTPException(status_code=400, detail="OAuth error")
 

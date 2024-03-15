@@ -24,7 +24,7 @@ app.add_middleware(
 )
 
 # [정보] 라우터를 설정합니다.
-app.include_router(authRouter, prefix="/api/auth", tags=["auth"])
+app.include_router(authRouter, prefix="/api/authentication", tags=["authentication"])
 
 @app.get("/")
 def read_root():

@@ -7,10 +7,10 @@ from sqlalchemy.orm import Session
 from starlette.requests import Request
 from aredis import StrictRedis
 # Module
-from app.modules.auth.service.auth_service import AuthenticationBuilder
-from app.modules.auth.schemas import TokenRequest
-from app.modules.auth.service.config_service import oauth
-from dependencies.dependencies import get_postgres_session, get_redis_pool
+from app.common.authentication.social_auth import AuthenticationBuilder
+from app.modules.authentication.schemas import TokenRequest
+from app.common.authentication.config import oauth
+from app.dependencies.dependencies import get_postgres_session, get_redis_pool
 
 authRouter = APIRouter()
 authBuilder = AuthenticationBuilder()

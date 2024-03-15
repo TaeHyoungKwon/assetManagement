@@ -5,7 +5,7 @@ from uuid import uuid4
 
 # Module
 from database.config import PostgresBase
-from app.modules.auth.schemas import UserRoleEnum
+from app.modules.authentication.schemas import UserRoleEnum
 
 class User(PostgresBase):
     __tablename__ = "users"
